@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="author" content="">
-  <meta name="description" content="CS312 Group Project">
+  <meta name="description" content="Group Members">
   <meta name="keywords" content="">
-  <title>CS312</title>
+  <title>Members</title>
 </head>
 
 <body>
     <?php include 'navbar.php'; ?>  
-    <h1>Company Name</h1>
-    <img src="Image Name" alt="Image Discription" width="" height="">
+    <h1>Members</h1>
 </body> 

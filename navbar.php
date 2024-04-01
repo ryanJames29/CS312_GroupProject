@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <?php include 'navbar.php'; ?>  
-    <h1>Company Name</h1>
-    <img src="Image Name" alt="Image Discription" width="" height="">
+    <div class="navbar">
+        <a href="https://cs.colostate.edu:4444/~ryanj29/CS312_GroupProject/index.php">Home</a>
+        <a href="https://cs.colostate.edu:4444/~ryanj29/CS312_GroupProject/members.php">Members</a>
+    </div>
 </body> 
