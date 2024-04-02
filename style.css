@@ -16,3 +16,18 @@
     color: var(--text-primary);
     background-color: var(--lt-blue);
 }
+table {
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+td, th {
+    border: 2px solid white;
+    padding: 10px;
+    text-align: center;
+}
+
+.errorMessage {
+    color: var(--dk-gold);
+    font-weight: bold;
+}
