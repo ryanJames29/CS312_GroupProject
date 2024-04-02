@@ -1,0 +1,18 @@
+/* main color palette */
+:root {
+    --dk-blue: #0F2143;
+    --dk-green: #43572E;
+    --lt-blue: #354E56;
+    --dk-gold: #8B6212;
+    --text-primary: white;
+}
+
+.member-content {
+    color: var(--text-primary);
+    background-color: var(--dk-green);
+}
+
+.home-content {
+    color: var(--text-primary);
+    background-color: var(--lt-blue);
+}

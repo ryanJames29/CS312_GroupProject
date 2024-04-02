@@ -6,9 +6,10 @@
   <meta name="description" content="Group Members">
   <meta name="keywords" content="">
   <title>Members</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 
-<body>
+<body class="member-content">
     <?php include 'navbar.php'; ?>  
     <h1>Members</h1>
 
@@ -19,7 +20,11 @@
         and being around friends and family.
     </p>
 
-    <h2> Group Member 2 </h2>
+    <h2> Mitchell Scott </h2>
+    <img src="./images/ArkFishing.jpeg" width="300px" height="300px">
+    <p>Hi! I am a senior (gradudating in the summer) studying computer science. I have been working as a software developer the last year and half and just got a new job where I explictily
+      doing fron-end development work in VueJs, which I am very excited for!
+    </p>
 
     <h2> Group Member 3 </h2>
 
