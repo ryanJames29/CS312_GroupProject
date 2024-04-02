@@ -19,7 +19,9 @@
         and being around friends and family.
     </p>
 
-    <h2> Group Member 2 </h2>
+    <h2> Mitchell Scott </h2>
+    <img src="./images/ArkFishing.jpeg" width="300px" height="300px">
+    <p>Hi! I am a senior (gradudating in the summer) studying computer science. </p>
 
     <h2> Group Member 3 </h2>
 
