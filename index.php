@@ -17,13 +17,13 @@
 
     <h2>Table Generator</h2>
 
-    <label for="rowColCount">Enter number for Rows & Columns (1-26)</label>
-    <input type="number" id="rowColCount" min="1" max="26">
-    <br>
-    <label for="colorCount">Enter number of Colors (1-10)</label>
-    <input type="number" id="colorCount" min="1" max="10">
-    <br>
-    <button onclick="generateTables()">Generate Tables</button>
+    <label for="rowColCount">Enter number for Rows & Columns (1-26)</label><br>
+    <input class="input" type="number" id="rowColCount" min="1" max="26">
+    <br><br>
+    <label for="colorCount">Enter number of Colors (1-10)</label><br>
+    <input class="input" type="number" id="colorCount" min="1" max="10">
+    <br><br>
+    <button onclick="generateTables()">Generate Tables</button><br>
    
 
     <div id="errorMessage" class="errorMessage"></div>
