@@ -26,7 +26,12 @@
       doing fron-end development work in VueJs, which I am very excited for!
     </p>
 
-    <h2> Group Member 3 </h2>
+    <h2> Matt Smith </h2>
+    <img src="./images/link.png" width="300px" height="300px">
+    <p>
+      Hello! My name is Matt, and I'm a junior computer science major at CSU, with a concentration in Networks and Security. 
+      After school, I want to get a pentesting job, and then work towards increasing my game development skills.
+    </p>
 
     <h2> Group Member 4 </h2>
 </body> 
