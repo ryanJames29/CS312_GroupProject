@@ -1,20 +1,24 @@
 /* main color palette */
 :root {
-    --dk-blue: #0F2143;
-    --dk-green: #43572E;
-    --lt-blue: #354E56;
-    --dk-gold: #8B6212;
     --text-primary: white;
+    --text-secondary: #C7D4D6;
+    --background-primary: #505639;
+    --background-secondary: #2c473a;
+    --error: #7a6a44;
+    --light-accent: #7d5f4e;
+    --dark-accent: #414d43;
+
+    font-family: monaco, monospace;
 }
 
 .member-content {
     color: var(--text-primary);
-    background-color: var(--dk-green);
+    background-color: var(--background-primary  );
 }
 
 .home-content {
     color: var(--text-primary);
-    background-color: var(--lt-blue);
+    background-color: var(--background-primary);
 }
 table {
     border-collapse: collapse;
@@ -28,6 +32,49 @@ td, th {
 }
 
 .errorMessage {
-    color: var(--dk-gold);
+    background-color: var(--error);
     font-weight: bold;
+    width: 300px;
+}
+.errorMessage:hover {
+    padding: 0.25rem;
+    border-style: outset;
+}
+
+.navbar, a {
+    text-decoration: none;
+    color: var(--text-primary)
+}
+
+.link:hover {
+    text-decoration: underline;
+    text-size-adjust: 5%;
+    text-decoration-color: var(--text-secondary)
+}
+
+button {
+    padding: 0.5rem;
+    border-style: none;
+    border-radius: 0.25rem;
+    color: var(--text-primary);
+    background-color: var(--background-secondary);
+}
+
+button:hover {
+    transform: scale(1.1);
+    border-style: outset;
+    border-radius: 0.35rem;
+}
+
+hr.navbar {
+    border-color: var(--background-secondary);
+    background-color: var(--background-secondary);
+    border-style: solid;
+    color: var(--background-secondary);
+    height: 1px;
+}
+
+.input {
+    padding: 0.25rem;
+    width: 300px;
 }
