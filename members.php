@@ -34,8 +34,9 @@
     </p>
 
     <h2> Joshua Staut</h2>
+    <img src="./images/Staut_Headshot.jpg" alt="" width="300px" height="300px">
     <p> Hey! I'm a senior here at Colorado State. I'm finishing up my degree in Computer Science and am looking forward to graduating 
     in the fall. Outside of school I love to be outside and go camping or fishing. I also love to play Warhammer in my free time as well as
-    play the piano
+    play the piano.
     </p>
 </body> 
