@@ -7,6 +7,7 @@
   <meta name="keywords" content="">
   <title>Members</title>
   <link rel="stylesheet" href="./style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/logo.png">
 </head>
 
 <body class="member-content">
@@ -14,10 +15,10 @@
     <h1>Members</h1>
 
     <h2> Ryan James </h2>
-    <img src="" alt="" width="" height="">
-    <p> I'm a senior computer science major at Colorado State University with a general concentration. After school, I am interested in
-        getting into web development or software engineering. I also have an interest in cyber security. I enjoy being outdoors, watching sports,
-        and being around friends and family.
+    <img src="./images/RyanBio" alt="" width="190" height="342">
+    <p> I'm a senior computer science major at Colorado State University with a general concentration. 
+      After school, I am interested in getting into web development or software engineering. I also have 
+      an interest in cyber security. I enjoy being outdoors, watching sports, and being around friends and family.
     </p>
 
     <h2> Mitchell Scott </h2>

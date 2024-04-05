@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="author" content="">
-  <meta name="description" content="CS312 Group Project">
+  <meta name="description" content="CS312 Group Project, team 18">
   <meta name="keywords" content="">
-  <title>CS312</title>
+  <title>Team 18 LLC</title>
   <link rel="stylesheet" href="./style.css">
   <script src="./js/tableGenerator.js"></script>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/logo.png">
 </head>
 
 <body class="home-content">
     <?php include 'navbar.php'; ?>  
     <h1>Team 18 LLC</h1>
-    <img src="Image Name" alt="Image Discription" width="" height="">
+    <img src="./images/logo.png" alt="Team 18 LLC" width="300" height="200">
 
     <h2>Table Generator</h2>
 
