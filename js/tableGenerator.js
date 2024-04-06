@@ -58,10 +58,10 @@ function createColorSelect(options, initialValue, index, selectedColors) {
 
     var isUnique = isColorUnique(selectedColors, selectedColor, selectedIndex);
     if (!isUnique) {
+      // defaults back to what original color was prior to disallowed selection
       event.target.value = previousValue;
       displayErrorMessage(event.target.parentNode, "Color is already selected!");
     } else {
-      // defaults back to what original color was prior to disallowed selection
       clearColorErrorMessage(event.target.parentNode);
     }
     event.target.setAttribute("color-initial", event.target.value);
