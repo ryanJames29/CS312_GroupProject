@@ -6,8 +6,10 @@ function generateColorTable(colorCountInput) {
 
   //use this id for styling
   colorTable.id = "colorTable"; 
-
-  var colorOptions = ["Red", "Orange", "Yellow", "Blue", "Teal", "Purple", "Green", "Brown", "Black"];
+ 
+  // Array of colors based on assignment. Wasn't sure of an "intuitive" way of organizing them 
+  // other than from hot colors to cooler colors. Maybe there is a better way???
+  var colorOptions = ["Red", "Orange", "Yellow", "Blue", "Teal", "Purple", "Green", "Brown","Grey", "Black"];
 
   var selectedColors = [];
 
@@ -41,27 +43,28 @@ function createColorSelect(options, initialValue, index, selectedColors) {
     select.appendChild(option);
   });
 
-  select.setAttribute("data-index", index);
+  //for accessing the initial colors in dropdown, and their indices.
+  select.setAttribute("color-index", index);
+  select.setAttribute("color-initial", initialValue);
 
-  select.setAttribute("data-initial", initialValue);
-
+  //Added an event listner to look for changes in dropdown box.
   select.addEventListener("change", function(event) {
-    var selectedIndex = parseInt(event.target.getAttribute("data-index"));
+    var selectedIndex = parseInt(event.target.getAttribute("color-index"));
     var selectedColor = event.target.value;
 
-    var previousValue = event.target.getAttribute("data-initial");
+    var previousValue = event.target.getAttribute("color-initial");
 
     selectedColors[selectedIndex] = selectedColor;
 
     var isUnique = isColorUnique(selectedColors, selectedColor, selectedIndex);
     if (!isUnique) {
       event.target.value = previousValue;
-
-      displayErrorMessage(event.target.parentNode, "Color must be unique!");
+      displayErrorMessage(event.target.parentNode, "Color is already selected!");
     } else {
-      clearErrorMessage(event.target.parentNode);
+      // defaults back to what original color was prior to disallowed selection
+      clearColorErrorMessage(event.target.parentNode);
     }
-    event.target.setAttribute("data-initial", event.target.value);
+    event.target.setAttribute("color-initial", event.target.value);
   });
 
   return select;
@@ -77,7 +80,7 @@ function isColorUnique(selectedColors, selectedColor, currentIndex) {
 }
 
 function displayErrorMessage(cell, message) {
-  clearErrorMessage(cell);
+  clearColorErrorMessage(cell);
 
   var errorMessage = document.createElement("p");
   errorMessage.textContent = message;
@@ -87,7 +90,8 @@ function displayErrorMessage(cell, message) {
   cell.appendChild(errorMessage);
 }
 
-function clearErrorMessage(cell) {
+// clears color error message, 
+function clearColorErrorMessage(cell) {
   var errorMessage = cell.querySelector("p");
   if (errorMessage) {
     errorMessage.remove();
@@ -126,7 +130,7 @@ function generateTables() {
   errorMessage.textContent = "";
   tablesContainer.innerHTML = ""; 
   
-  // Input Validation
+  // User Input Validation for rows/columns and number of colors
   if (rowCountInput < 1 || rowCountInput > 26 || colorCountInput < 1 || colorCountInput > 10) {
     errorMessage.textContent = "Unsupported value entered. Please enter values between 1 and 26 for rows/columns and between 1 and 10 for colors.";
     return;
