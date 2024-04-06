@@ -5,12 +5,21 @@
 function generateColorTable(colorCountInput) {
     // right column is empty. Directions don't say what is supposed to be in there? 
     // Maybe nothing for just Milestone 1???
+    var dropDown = document.createElement("select");
+    var colors = ["red", "orange", "yellow", "green", "blue", "purple", "grey", "brown", "black", "teal"]
+    for (var i = 0; i < 10; i++) {
+      option = document.createElement("option");
+      option.setAttribute("value", "Red");  
+      option.innerHTML = colors[i];
+      dropDown.appendChild(option);
+    }
+
     var colorTable = document.createElement("table");
     for (var i = 1; i <= colorCountInput; i++) {
       var row = colorTable.insertRow();
-      var cell1 = row.insertCell();
+      var cell1 = row.insertCell(dropDown);
       var cell2 = row.insertCell();
-      cell1.textContent = "Color " + i;
+      cell1.appendChild(dropDown);
     }
     return colorTable;
   }
