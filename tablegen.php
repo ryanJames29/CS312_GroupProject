@@ -68,10 +68,11 @@ error_reporting(E_ALL ^ E_NOTICE);
     <label for="colorCount">Enter number of Colors (1-10)</label><br>
     <input class="input" type="number" id="colorCount" min="1" max="10">
     <br><br>
-    <button onclick="generateTables()">Generate Tables</button><br>
+    <button onclick="generateTables()">Generate Tables</button><br><br>
 
     <div id="errorMessage" class="errorMessage"></div>
     <div id="tableError"></div>
     <div id="tablesContainer"></div>  
+    <button onclick="print()">Print the Table</button>
 </body>
 </html>
