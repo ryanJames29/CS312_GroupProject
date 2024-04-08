@@ -73,5 +73,6 @@ error_reporting(E_ALL ^ E_NOTICE);
     <div id="errorMessage" class="errorMessage"></div>
     <div id="tableError"></div>
     <div id="tablesContainer"></div>  
+    <button onclick="print()">Print the Table</button>
 </body>
 </html>
