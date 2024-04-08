@@ -142,3 +142,12 @@ function generateTables() {
   tablesContainer.appendChild(colorTable);
   tablesContainer.appendChild(alphabetTable);
 }
+
+function print() {
+  var printContents = document.getElementById("tablesContainer").innerHTML;
+  w=window.open();
+  w.document.write('<img src="./images/logo.png" width="100px" height="50px" onload="window.print();window.close()" />');
+  w.document.write(printContents);
+  w.print();
+  w.close();
+}
