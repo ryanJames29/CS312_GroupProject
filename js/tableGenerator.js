@@ -16,16 +16,22 @@ function generateColorTable(colorCountInput) {
   for (var i = 0; i < colorCountInput; i++) {
     var row = colorTable.insertRow();
     var colorCell = row.insertCell();
+    // For styling
+    colorCell.id = "dropDownCell";
 
     var initialColor = colorOptions[i % colorOptions.length];
     selectedColors.push(initialColor);
 
     var select = createColorSelect(colorOptions, initialColor, i, selectedColors);
+    // For styling
+    select.id = "dropDownMenu";
 
     colorCell.appendChild(select);
 
     var blankCell = row.insertCell();
     blankCell.textContent = ""; 
+    // For styling
+    blankCell.id = "colorCell";
   }
 
   return colorTable;
@@ -101,20 +107,25 @@ function clearColorErrorMessage(cell) {
 
 function generateAlphabeticalTable(rowCountInput) {
   var alphabetTable = document.createElement("table");
+  // For styling
+  alphabetTable.id = "alphabetTable";
 
   var headerRow = alphabetTable.insertRow();
   headerRow.insertCell(); 
   for (var i = 0; i < rowCountInput; i++) {
     var headerCell = headerRow.insertCell();
+    headerCell.id = "alphabetTableCell";
     headerCell.textContent = String.fromCharCode(65 + i); 
   }
 
   for (var i = 0; i < rowCountInput; i++) {
     var row = alphabetTable.insertRow();
     var labelCell = row.insertCell();
+    labelCell.id = "alphabetTableCell";
     labelCell.textContent = i + 1; 
     for (var j = 0; j < rowCountInput; j++) {
       var cell = row.insertCell();
+      cell.id = "alphabetTableCell";
     }
   }
 

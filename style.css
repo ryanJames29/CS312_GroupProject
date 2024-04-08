@@ -79,6 +79,24 @@ hr.navbar {
     width: 300px;
 }
 
+#colorTable {
+    width: 80%;
+}
+#dropDownCell {
+    width: 20%;
+}
+#colorCell {
+    width: 80%;
+}
+#dropDownMenu {
+    width: 90%;
+}
+
+#alphabetTableCell {
+    width: 30px;
+    height: 30px;
+}
+
 @media print{
     @page{
         margin: 0;
