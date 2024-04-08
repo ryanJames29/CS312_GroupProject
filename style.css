@@ -78,3 +78,9 @@ hr.navbar {
     padding: 0.25rem;
     width: 300px;
 }
+
+@media print{
+    @page{
+        margin: 0;
+    }
+}
