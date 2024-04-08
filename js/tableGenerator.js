@@ -153,3 +153,39 @@ function generateTables() {
   tablesContainer.appendChild(colorTable);
   tablesContainer.appendChild(alphabetTable);
 }
+
+function print() {
+  var css = '<style type="text/css">' +
+            'table' + '{' +
+                'border-collapse: collapse;' +
+                'margin-bottom: 30px;' +
+                'margin-top: 30px;' +
+              '}' +
+              'td, th' + '{' +
+                'border: 2px solid;' +
+                'padding: 10px;' +
+                'text-align: center;' +
+                '}' +
+              '#colorTable' + '{' +
+                  'width: 80%;' +
+              '}' +
+              '#dropDownCell' + '{' +
+                  'width: 20%;' +
+              '}' +
+              '#colorCell' + '{' +
+                  'width: 80%;' +
+              '}' +
+              '#dropDownMenu' + '{' +
+                  'width: 90%;' +
+                  'apperance: none' +
+              '}' +
+              '#alphabetTableCell' + '{' +
+                  'width: 30px;' +
+                  'height: 30px;' +
+              '}' +
+        '</style>';
+  var printContents =  css + document.getElementById("tablesContainer").innerHTML;
+  w=window.open("");
+  w.document.write('<img src="./images/logo.png" width="200px" height="100px" />');
+  w.document.write(printContents);
+}
