@@ -1,40 +1,63 @@
-// TODO: 
-//  - Add styling requirements for the table
 
 function generateColorTable(colorCountInput) {
   var colorTable = document.createElement("table");
+  colorTable.id = "colorTable";
 
-  //use this id for styling
-  colorTable.id = "colorTable"; 
- 
-  // Array of colors based on assignment. Wasn't sure of an "intuitive" way of organizing them 
-  // other than from hot colors to cooler colors. Maybe there is a better way???
-  var colorOptions = ["Red", "Orange", "Yellow", "Blue", "Teal", "Purple", "Green", "Brown","Grey", "Black"];
-
-  var selectedColors = [];
+  var colorOptions = ["Red", "Orange", "Yellow", "Blue", "Teal", "Purple", "Green", "Brown", "Grey", "Black"];
 
   for (var i = 0; i < colorCountInput; i++) {
     var row = colorTable.insertRow();
     var colorCell = row.insertCell();
     // For styling
     colorCell.id = "dropDownCell";
-
     var initialColor = colorOptions[i % colorOptions.length];
-    selectedColors.push(initialColor);
 
-    var select = createColorSelect(colorOptions, initialColor, i, selectedColors);
+    // Create color selection dropdown
+    var select = createColorSelect(colorOptions, initialColor, i, colorTable);
     // For styling
     select.id = "dropDownMenu";
-
+    // Append color selection dropdown to cell
     colorCell.appendChild(select);
 
-    var blankCell = row.insertCell();
-    blankCell.textContent = ""; 
-    // For styling
-    blankCell.id = "colorCell";
+    // Create adjacent cell for displaying selected color
+    var displayCell = row.insertCell();
+    displayCell.style.backgroundColor = initialColor; 
+
+    select.addEventListener("change", function(event) {
+      var selectedColor = event.target.value;
+      var colorCell = event.target.parentNode.nextElementSibling;
+      if (colorCell) {
+        // Check if the selected color is unique
+        var selectedIndex = parseInt(event.target.getAttribute("color-index"));
+        var selectedColors = colorTable.querySelectorAll("select[color-index]");
+        var isUnique = isColorUnique(selectedColors, selectedColor, selectedIndex);
+        if (!isUnique) {
+          // If color selection is not unique, revert back to the previous value
+          event.target.value = event.target.getAttribute("color-initial");
+          displayErrorMessage(event.target.parentNode, "Color is already selected!");
+        } else {
+          colorCell.style.backgroundColor = selectedColor;
+          clearColorErrorMessage(event.target.parentNode);
+        }
+      } else {
+        console.error("Adjacent color cell not found for index:", selectedIndex);
+      }
+
+      // Update the 'color-initial' attribute with the newly selected color
+      event.target.setAttribute("color-initial", event.target.value);
+    });
   }
 
   return colorTable;
+}
+
+function isColorUnique(selectedColors, selectedColor, currentIndex) {
+  for (var i = 0; i < selectedColors.length; i++) {
+    if (i !== currentIndex && selectedColors[i] === selectedColor) {
+      return false;
+    }
+  }
+  return true;
 }
 
 function createColorSelect(options, initialValue, index, selectedColors) {
@@ -49,40 +72,11 @@ function createColorSelect(options, initialValue, index, selectedColors) {
     select.appendChild(option);
   });
 
-  //for accessing the initial colors in dropdown, and their indices.
+  // Set attributes for tracking initial color and index
   select.setAttribute("color-index", index);
   select.setAttribute("color-initial", initialValue);
 
-  //Added an event listner to look for changes in dropdown box.
-  select.addEventListener("change", function(event) {
-    var selectedIndex = parseInt(event.target.getAttribute("color-index"));
-    var selectedColor = event.target.value;
-
-    var previousValue = event.target.getAttribute("color-initial");
-
-    selectedColors[selectedIndex] = selectedColor;
-
-    var isUnique = isColorUnique(selectedColors, selectedColor, selectedIndex);
-    if (!isUnique) {
-      // defaults back to what original color was prior to disallowed selection
-      event.target.value = previousValue;
-      displayErrorMessage(event.target.parentNode, "Color is already selected!");
-    } else {
-      clearColorErrorMessage(event.target.parentNode);
-    }
-    event.target.setAttribute("color-initial", event.target.value);
-  });
-
   return select;
-}
-
-function isColorUnique(selectedColors, selectedColor, currentIndex) {
-  for (var i = 0; i < selectedColors.length; i++) {
-    if (i !== currentIndex && selectedColors[i] === selectedColor) {
-      return false; 
-    }
-  }
-  return true; 
 }
 
 function displayErrorMessage(cell, message) {
@@ -91,12 +85,11 @@ function displayErrorMessage(cell, message) {
   var errorMessage = document.createElement("p");
   errorMessage.textContent = message;
   errorMessage.style.color = "#C7D4D6";
-  errorMessage.style.fontSize= "12px";
+  errorMessage.style.fontSize = "12px";
 
   cell.appendChild(errorMessage);
 }
 
-// clears color error message, 
 function clearColorErrorMessage(cell) {
   var errorMessage = cell.querySelector("p");
   if (errorMessage) {
@@ -104,6 +97,51 @@ function clearColorErrorMessage(cell) {
   }
 }
 
+function createColorSelect(options, initialValue, index, colorTable) {
+  var select = document.createElement("select");
+
+  options.forEach(function(color) {
+    var option = document.createElement("option");
+    option.text = color;
+    if (color === initialValue) {
+      option.selected = true;
+    }
+    select.appendChild(option);
+  });
+
+  // Set attributes for tracking initial color and index
+  select.setAttribute("color-index", index);
+  select.setAttribute("color-initial", initialValue);
+
+  return select;
+}
+
+function isColorUnique(selectedColors, selectedColor, currentIndex) {
+  for (var i = 0; i < selectedColors.length; i++) {
+    if (i !== currentIndex && selectedColors[i].value === selectedColor) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function displayErrorMessage(cell, message) {
+  clearColorErrorMessage(cell);
+
+  var errorMessage = document.createElement("p");
+  errorMessage.textContent = message;
+  errorMessage.style.color = "#C7D4D6";
+  errorMessage.style.fontSize = "12px";
+
+  cell.appendChild(errorMessage);
+}
+
+function clearColorErrorMessage(cell) {
+  var errorMessage = cell.querySelector("p");
+  if (errorMessage) {
+    errorMessage.remove();
+  }
+}
 
 function generateAlphabeticalTable(rowCountInput) {
   var alphabetTable = document.createElement("table");
@@ -128,7 +166,6 @@ function generateAlphabeticalTable(rowCountInput) {
       cell.id = "alphabetTableCell";
     }
   }
-
   return alphabetTable;
 }
 
