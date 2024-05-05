@@ -96,3 +96,22 @@ hr.navbar {
     width: 30px;
     height: 30px;
 }
+
+.colorList {
+    top:150px;
+    left:350px;
+    position:fixed;
+}
+
+.colorErrorMessage {
+    background-color: var(--error);
+    font-weight: bold;
+    width: 300px;
+    top:100px;
+    left:350px;
+    position:fixed;
+}
+.colorErrorMessage:hover {
+    padding: 0.25rem;
+    border-style: outset;
+}
