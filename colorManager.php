@@ -1,19 +1,6 @@
 <?php
-$hostname = "faure";
-$username = "rm0819";
-$password = "835456763";
-$database = "rm0819";
-$mysqli = new mysqli($hostname, $username, $password, $database);
-
-// insert into colors values (0, "Red", "FF0000"), (1, "Orange", "FFA500"), (2, "Yellow", "FFFF00"), (3, "Green", "00FF00"), (4, "Teal", "008080"), (5, "Blue", "0000FF"), (6, "Purple", "800080"), (7, "Brown", "964B00"), (8, "Grey", "808080"), (9, "Black", "000000");
-
-$sql = "SELECT * FROM colors"; 
-
-$result = $mysqli->query($sql);
-
-while ($row = $result->fetch_row()) {
-    //echo "<p>Row: " . $row[1] . "</p>";
-}
+// CREATE TABLE colors (id int NOT NULL AUTO_INCREMENT, Name varchar(255) NOT NULL, HexValue varchar(32) NOT NULL, PRIMARY KEY (id));
+// insert into colors (Name, HexValue) values ("Red", "FF0000"), ("Orange", "FFA500"), ("Yellow", "FFFF00"), ("Green", "00FF00"), ("Teal", "008080"), ("Blue", "0000FF"), ("Purple", "800080"), ("Brown", "964B00"), ("Grey", "808080"), ("Black", "000000");
 
 if(array_key_exists('addColor', $_POST)) { 
     $name = $_POST["colorName"];
@@ -22,8 +9,31 @@ if(array_key_exists('addColor', $_POST)) {
 } 
 
 function addColor($name, $hex) {
-    echo $name . $hex;
-    $sql = "";
+    $hostname = "faure";
+    $username = "rm0819";
+    $password = "835456763";
+    $database = "rm0819";
+    $mysqli = new mysqli($hostname, $username, $password, $database);
+
+    // Test for the color already being in the table
+    $sql = "SELECT Name, HexValue FROM colors";
+    $result = $mysqli->query($sql);
+    while ($row = $result->fetch_row()) {
+        if ($row[0] == $name) {
+            echo "<p class=\"errorMessage\">That name already exists in the list of colors.</p>";
+            return;
+        }
+        if ($row[1] == $hex) {
+            echo "<p class=\"errorMessage\">That hex value already exists in the list of colors.</p>";
+            return;
+        }
+    }
+
+    $sql = "INSERT INTO colors(Name, HexValue) VALUES (?, ?)";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("ss", $name, $hex);
+    $stmt->execute();
+    // $result = $stmt->get_result();
 }
 
 
